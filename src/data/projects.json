@@ -1,0 +1,39 @@
+[
+    {
+        "slug": "chaw-republic",
+        "title": "Chaw Republic",
+        "description": "A food delivery platform connecting students with local vendors. Features real-time tracking, secure payments, and a vendor dashboard.",
+        "tags": [
+            "Next.js",
+            "MongoDB",
+            "Tailwind CSS",
+            "Stripe"
+        ],
+        "image": "/images/project-1.jpg",
+        "content": "Full case study content here..."
+    },
+    {
+        "slug": "portfolio-v1",
+        "title": "Developer Portfolio",
+        "description": "A modern, high-performance portfolio website built with Next.js and Framer Motion to showcase my skills and projects.",
+        "tags": [
+            "Next.js",
+            "Framer Motion",
+            "TypeScript"
+        ],
+        "image": "/images/project-2.jpg",
+        "content": "Full case study content here..."
+    },
+    {
+        "slug": "school-management-system",
+        "title": "School Management System",
+        "description": "A comprehensive system for managing student records, attendance, and grading for Brain Island International School.",
+        "tags": [
+            "React",
+            "Node.js",
+            "PostgreSQL"
+        ],
+        "image": "/images/project-3.jpg",
+        "content": "Full case study content here..."
+    }
+]

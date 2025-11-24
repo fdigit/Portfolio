@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Primary Blue Palette */
+  --primary: #2563EB; /* Blue-600 */
+  --primary-light: #3B82F6; /* Blue-500 */
+  --primary-dark: #1E40AF; /* Blue-800 */
+
+  /* Accent */
+  --accent: #10B981; /* Green-500 */
+  --accent-dark: #059669; /* Green-600 */
+
+  /* Modern gradient colors */
+  --purple: #8B5CF6;
+  --purple-light: #A78BFA;
+  --purple-dark: #7C3AED;
+  --pink: #EC4899;
+  --pink-light: #F472B6;
+  --pink-dark: #DB2777;
+  --cyan: #06B6D4;
+  --cyan-light: #22D3EE;
+  --cyan-dark: #0891B2;
+  
+  /* Bright Orange - Eye-catching! */
+  --orange: #F97316; /* Orange-500 - Bright and vibrant */
+  --orange-light: #FB923C; /* Orange-400 - Lighter shade */
+  --orange-dark: #EA580C; /* Orange-600 - Darker shade */
+  --orange-bright: #FF6B35; /* Bright coral-orange */
+  --orange-glow: #FF8C42; /* Glowing orange */
+
+  /* Neutral */
+  --text-dark: #0F172A; /* Slate-900 */
+  --text-light: #F8FAFC; /* Slate-50 */
+  --gray-light: #F3F4F6; /* Gray-100 */
+  --gray-medium: #E5E7EB; /* Gray-200 */
+  --gray-dark: #374151; /* Gray-700 */
+
+  /* Backgrounds */
+  --bg-light: #F8FAFC; /* Slate-50 */
+  --bg-white: #FFFFFF;
+  --bg-dark: #0F172A; /* Slate-900 */
+
+  /* Shadows */
+  --shadow-soft: 0px 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.5);
+  --shadow-orange-glow: 0 0 30px rgba(249, 115, 22, 0.6);
+  --shadow-orange-glow-lg: 0 0 50px rgba(249, 115, 22, 0.8);
+
+  /* Legacy support */
+  --background: var(--bg-light);
+  --foreground: var(--text-dark);
+  --radius: 0.5rem;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0F172A;
+    /* Slate-900 */
+    --foreground: #F8FAFC;
+    /* Slate-50 */
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
