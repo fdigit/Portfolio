@@ -31,7 +31,7 @@ export default function AnimatedCTA({
     };
 
     const variantClasses = {
-        primary: "bg-[#F97316] hover:bg-[#EA580C]",
+        primary: "bg-orange hover:bg-orange-dark",
         secondary: "bg-accent hover:bg-accent-dark",
         gradient: "relative overflow-hidden",
     };
@@ -56,7 +56,7 @@ export default function AnimatedCTA({
                     <motion.div
                         className="absolute inset-0"
                         style={{
-                            background: "linear-gradient(to right, #F97316, #FF6B35, #FF8C42)",
+                            background: "linear-gradient(to right, var(--orange), var(--orange-bright), var(--orange-glow))",
                             backgroundSize: "200% auto",
                         }}
                         animate={{
@@ -71,7 +71,7 @@ export default function AnimatedCTA({
                     <motion.div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100"
                         style={{
-                            background: "linear-gradient(to right, #FF8C42, #FF6B35, #F97316)",
+                            background: "linear-gradient(to right, var(--orange-glow), var(--orange-bright), var(--orange))",
                             backgroundSize: "200% auto",
                         }}
                         animate={{

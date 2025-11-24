@@ -12,12 +12,28 @@ interface ProjectCardProps {
     tags: string[];
     image: string;
     slug: string;
+    url?: string;
 }
 
-export default function ProjectCard({ title, description, tags, image, slug }: ProjectCardProps) {
+export default function ProjectCard({ title, description, tags, image, slug, url }: ProjectCardProps) {
     const [isHovered, setIsHovered] = useState(false);
+    const [imageError, setImageError] = useState(false);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
+
+    // Generate gradient colors based on slug for consistent placeholders
+    const getGradientColors = (slug: string) => {
+        const gradients = [
+            "from-blue-500 via-purple-500 to-pink-500",
+            "from-orange-500 via-red-500 to-pink-500",
+            "from-green-500 via-teal-500 to-blue-500",
+            "from-purple-500 via-indigo-500 to-blue-500",
+            "from-pink-500 via-rose-500 to-orange-500",
+            "from-cyan-500 via-blue-500 to-indigo-500",
+        ];
+        const hash = slug.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        return gradients[hash % gradients.length];
+    };
 
     const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 });
     const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 });
@@ -64,16 +80,42 @@ export default function ProjectCard({ title, description, tags, image, slug }: P
             />
 
             <div className="relative h-48 w-full overflow-hidden">
+                <div className={`absolute top-3 right-3 z-20 ${url ? '' : 'hidden'}`}>
+                    <span className="px-2 py-1 text-xs font-semibold bg-green-500 text-white rounded-full shadow-lg flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                        Live
+                    </span>
+                </div>
+                {url && (
+                    <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 z-10"
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Visit ${title} live site`}
+                    />
+                )}
                 <motion.div
                     animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
                     transition={{ duration: 0.5 }}
+                    className="relative w-full h-full"
                 >
-                    <Image
-                        src={image}
-                        alt={title}
-                        fill
-                        className="object-cover"
-                    />
+                    {!imageError ? (
+                        <Image
+                            src={image}
+                            alt={title}
+                            fill
+                            className="object-cover"
+                            onError={() => setImageError(true)}
+                        />
+                    ) : (
+                        <div className={`w-full h-full bg-gradient-to-br ${getGradientColors(slug)} flex items-center justify-center`}>
+                            <div className="text-white/80 text-4xl font-bold">
+                                {title.charAt(0).toUpperCase()}
+                            </div>
+                        </div>
+                    )}
                 </motion.div>
                 
                 {/* Animated overlay */}

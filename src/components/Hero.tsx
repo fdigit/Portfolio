@@ -7,6 +7,8 @@ import { ArrowRight, Download, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Parallax from "./animations/Parallax";
 import Link from "next/link";
+import { downloadCV } from "@/lib/downloads";
+import { toast } from "sonner";
 
 export default function Hero() {
     const containerVariants = {
@@ -27,7 +29,7 @@ export default function Hero() {
             y: 0,
             transition: {
                 duration: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                ease: "easeOut" as const,
             },
         },
     };
@@ -89,35 +91,37 @@ export default function Hero() {
                 >
                     {/* Text Content */}
                     <motion.div variants={itemVariants}>
-                        <motion.div
-                            className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-gradient-to-r from-primary/10 via-purple/10 to-pink/10 border border-primary/20 text-primary font-medium text-sm backdrop-blur-sm"
-                            whileHover={{ scale: 1.05 }}
-                        >
-                            <Sparkles size={14} className="animate-pulse" />
-                            <span>Available for new projects</span>
-                        </motion.div>
+                        <div className="relative overflow-hidden mb-6 h-10" style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}>
+                            <motion.div
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange/30 text-white font-medium text-sm shadow-lg whitespace-nowrap"
+                                style={{
+                                    background: "linear-gradient(to right, var(--orange), var(--orange-bright), var(--orange-glow))",
+                                    boxShadow: "0 0 20px rgba(249, 115, 22, 0.4)",
+                                }}
+                                initial={{ x: "100vw" }}
+                                animate={{
+                                    x: ["100vw", "-100%"],
+                                }}
+                                transition={{
+                                    duration: 20,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                            >
+                                <Sparkles size={14} className="animate-pulse" />
+                                <span>Available for new projects</span>
+                            </motion.div>
+                        </div>
 
                         <motion.h1
                             className="text-4xl md:text-6xl lg:text-7xl font-bold text-text-dark mb-6 leading-tight"
                             variants={itemVariants}
                         >
-                            Hi, I'm Mfon Francis <br />
-                            <motion.span
-                                className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple to-pink"
-                                animate={{
-                                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                                }}
-                                transition={{
-                                    duration: 5,
-                                    repeat: Infinity,
-                                    ease: "linear",
-                                }}
-                                style={{
-                                    backgroundSize: "200% auto",
-                                }}
-                            >
+                            Hi, <br className="md:hidden" />
+                            <span className="md:block">I'm Mfon Francis</span>{" "}
+                            <span className="text-orange text-2xl md:text-3xl lg:text-4xl font-semibold block md:inline md:ml-2">
                                 Web & Mobile Developer
-                            </motion.span>
+                            </span>
                         </motion.h1>
 
                         <motion.p
@@ -139,7 +143,15 @@ export default function Hero() {
                             <Button
                                 variant="outline"
                                 size="lg"
-                                className="bg-transparent border-2 border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.6)]"
+                                onClick={async () => {
+                                    try {
+                                        await downloadCV();
+                                        toast.success("CV downloaded successfully!");
+                                    } catch (error) {
+                                        toast.error("Failed to download CV. Please try again.");
+                                    }
+                                }}
+                                aria-label="Download CV"
                             >
                                 Download CV
                                 <Download className="ml-2" size={20} />

@@ -24,23 +24,23 @@ export default function ProjectsPage() {
             scale: 1,
             transition: {
                 duration: 0.5,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                ease: "easeOut" as const,
             },
         },
     };
 
     return (
-        <main className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <main className="min-h-screen py-12 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent -z-0" />
             
             <div className="max-w-7xl mx-auto relative z-10">
                 <ScrollReveal direction="up" delay={0.1}>
-                    <div className="mb-12">
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-text-dark">
+                    <div className="mb-8 sm:mb-12">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-text-dark dark:text-text-light">
                             All Projects
                         </h1>
-                        <p className="text-gray-dark max-w-2xl text-lg">
+                        <p className="text-base sm:text-lg text-gray-dark dark:text-gray-300 max-w-2xl">
                             A collection of my work in web and mobile development. Each project represents a unique challenge and solution.
                         </p>
                     </div>
@@ -51,7 +51,7 @@ export default function ProjectsPage() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
                 >
                     {projectsData.map((project, index) => (
                         <motion.div

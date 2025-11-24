@@ -87,18 +87,31 @@ html {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0F172A;
-    /* Slate-900 */
-    --foreground: #F8FAFC;
-    /* Slate-50 */
-  }
+/* Dark mode variables */
+.dark {
+  --background: #0F172A; /* Slate-900 */
+  --foreground: #F8FAFC; /* Slate-50 */
+  --bg-light: #1E293B; /* Slate-800 */
+  --bg-white: #0F172A; /* Slate-900 */
+  --bg-dark: #020617; /* Slate-950 */
+  --text-dark: #F8FAFC; /* Slate-50 */
+  --text-light: #0F172A; /* Slate-900 */
+  --gray-light: #1E293B; /* Slate-800 */
+  --gray-medium: #334155; /* Slate-700 */
+  --gray-dark: #CBD5E1; /* Slate-300 */
+  --shadow-soft: 0px 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Light mode (default) */
+:root {
+  --background: var(--bg-light);
+  --foreground: var(--text-dark);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {

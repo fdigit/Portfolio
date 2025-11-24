@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio - Mfon Francis
+
+A modern, high-performance portfolio website built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4. Showcasing web and mobile development projects with a focus on best practices, accessibility, and user experience.
+
+## Features
+
+- 🎨 **Modern Design**: Beautiful UI with dark mode support
+- ⚡ **Performance**: Optimized with Next.js 16 and React 19
+- ♿ **Accessible**: WCAG compliant with proper ARIA labels and keyboard navigation
+- 🔍 **SEO Optimized**: Complete metadata, Open Graph, Twitter Cards, and structured data
+- 📱 **Responsive**: Mobile-first design that works on all devices
+- 🎭 **Animations**: Smooth transitions with Framer Motion
+- 📝 **Form Validation**: Contact form with react-hook-form and Zod
+- 🎯 **Type Safe**: Full TypeScript coverage
+- 🌙 **Dark Mode**: System preference detection with manual toggle
+
+## Tech Stack
+
+- **Framework**: Next.js 16
+- **React**: 19.2.0
+- **TypeScript**: 5.x
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Forms**: React Hook Form + Zod
+- **Icons**: Lucide React
+- **Notifications**: Sonner
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd Portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Install additional required packages:
+```bash
+npm install react-hook-form zod @hookform/resolvers sonner
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local` with your configuration.
+
+5. Run the development server:
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+## Project Structure
+
+```
+src/
+├── app/              # Next.js app router pages
+├── components/       # React components
+│   ├── ui/          # Reusable UI components
+│   ├── forms/        # Form components
+│   └── animations/   # Animation components
+├── lib/              # Utilities and helpers
+├── data/             # Static data (projects, etc.)
+└── public/           # Static assets
+```
+
+## Key Features Implementation
+
+### Color System & Dark Mode
+- CSS variables for consistent theming
+- Functional dark mode with system preference detection
+- Theme toggle component in navbar
+
+### Reusable Components
+- Button, Input, Textarea, Card, Badge
+- Container, Section for layout
+- Loading states and skeletons
+- Error boundaries
+
+### SEO & Metadata
+- Dynamic metadata generation
+- Open Graph and Twitter Cards
+- JSON-LD structured data
+- Sitemap and robots.txt
+
+### Accessibility
+- Skip to content link
+- ARIA labels and roles
+- Keyboard navigation
+- Focus indicators
+- Semantic HTML
+
+### Form Handling
+- Contact form with validation
+- Error states and messages
+- Loading states
+- Toast notifications
+
+## Configuration
+
+See `INSTALLATION.md` for detailed setup instructions including:
+- Required dependencies
+- Environment variables
+- CV file setup
+- Contact form API configuration
+- Social links configuration
+
+## Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Configure environment variables
+4. Deploy!
+
+For other platforms, see [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying).
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All rights reserved. © 2025 Mfon Francis

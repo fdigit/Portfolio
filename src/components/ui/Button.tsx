@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 
+    'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'> {
     variant?: "primary" | "secondary" | "outline" | "ghost" | "gradient";
     size?: "sm" | "md" | "lg";
     className?: string;
@@ -34,11 +35,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         };
 
         const variants = {
-            primary: "bg-[#F97316] hover:bg-[#EA580C] text-white shadow-lg shadow-[#F97316]/40 hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] hover:scale-105 font-bold",
+            primary: "bg-orange hover:bg-orange-dark text-white shadow-lg shadow-orange/40 hover:shadow-glow-orange hover:scale-105 font-bold",
             secondary: "bg-accent hover:bg-accent-dark text-white shadow-lg shadow-accent/25 hover:shadow-glow hover:scale-105",
-            outline: "border-2 border-[#F97316] text-[#F97316] hover:bg-[#F97316]/10 hover:border-[#FB923C] hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] hover:scale-105 relative overflow-hidden group font-semibold",
-            ghost: "text-gray-dark hover:bg-gray-light hover:scale-105",
-            gradient: "bg-gradient-to-r from-[#F97316] via-[#FF6B35] to-[#FF8C42] text-white shadow-lg shadow-[#F97316]/40 hover:shadow-[0_0_50px_rgba(249,115,22,0.8)] hover:scale-105 bg-[length:200%_auto] animate-gradient-x font-bold",
+            outline: "border-2 border-orange text-orange hover:bg-orange/10 hover:border-orange-light hover:shadow-glow-orange hover:scale-105 relative overflow-hidden group font-semibold dark:border-orange dark:text-orange dark:hover:bg-orange/10",
+            ghost: "text-gray-dark dark:text-gray-light hover:bg-gray-light dark:hover:bg-gray-medium hover:scale-105",
+            gradient: "bg-gradient-to-r from-orange via-orange-bright to-orange-glow text-white shadow-lg shadow-orange/40 hover:shadow-glow-orange-lg hover:scale-105 bg-[length:200%_auto] animate-gradient-x font-bold",
         };
 
         const sizes = {
@@ -63,19 +64,19 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 onClick={handleClick}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={twMerge(
-                    "relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed overflow-hidden",
+                className={cn(
+                    "relative inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                     !isGradient && variants[variant],
                     sizes[size],
                     className
                 )}
-                {...props}
+                {...(props as any)}
             >
                 {isGradient && (
                     <span 
                         className="absolute inset-0 bg-[length:200%_auto] animate-gradient-x opacity-100"
                         style={{
-                            background: "linear-gradient(to right, #F97316, #FF6B35, #FF8C42)",
+                            background: "linear-gradient(to right, var(--orange), var(--orange-bright), var(--orange-glow))",
                         }}
                     />
                 )}

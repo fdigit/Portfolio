@@ -1,39 +1,90 @@
 [
     {
-        "slug": "chaw-republic",
-        "title": "Chaw Republic",
-        "description": "A food delivery platform connecting students with local vendors. Features real-time tracking, secure payments, and a vendor dashboard.",
+        "slug": "ethan-mercy-foundation",
+        "title": "Ethan-Mercy Foundation",
+        "description": "A nonprofit foundation website providing hope and restoration services. Features donation integration, event management, and volunteer registration.",
         "tags": [
             "Next.js",
-            "MongoDB",
+            "TypeScript",
             "Tailwind CSS",
-            "Stripe"
+            "Nonprofit"
         ],
-        "image": "/images/project-1.jpg",
-        "content": "Full case study content here..."
+        "image": "/images/ethan-mercy-foundation.png",
+        "url": "https://ethanmercy.org/",
+        "content": "Ethan-Mercy Foundation is a nonprofit organization dedicated to providing hope and restoration to communities. The website features a modern, accessible design with donation capabilities, event management, and volunteer registration systems."
     },
     {
-        "slug": "portfolio-v1",
-        "title": "Developer Portfolio",
-        "description": "A modern, high-performance portfolio website built with Next.js and Framer Motion to showcase my skills and projects.",
+        "slug": "kings-court-schools",
+        "title": "King's Court Schools",
+        "description": "A comprehensive school website featuring academic programs, admissions, news, and parent portal integration for King's Court Schools in Makurdi.",
         "tags": [
             "Next.js",
-            "Framer Motion",
-            "TypeScript"
+            "React",
+            "Tailwind CSS",
+            "Education"
         ],
-        "image": "/images/project-2.jpg",
-        "content": "Full case study content here..."
+        "image": "/images/kings-court-schools.png",
+        "url": "http://kingscourtschoolsmkd.com/",
+        "content": "King's Court Schools website provides a complete digital presence for the educational institution, including information about academic programs, admissions process, school news, and integration with parent communication systems."
     },
     {
-        "slug": "school-management-system",
-        "title": "School Management System",
-        "description": "A comprehensive system for managing student records, attendance, and grading for Brain Island International School.",
+        "slug": "frilife-media",
+        "title": "Frilife Media",
+        "description": "A modern media company website showcasing services, awards, and portfolio. Features newsletter subscription, social media integration, and a comprehensive dashboard.",
+        "tags": [
+            "React",
+            "Next.js",
+            "Tailwind CSS",
+            "Media"
+        ],
+        "image": "/images/frilife-media.png",
+        "url": "https://frilifemedia.com/",
+        "content": "Frilife Media is a media company website featuring their services, awards, and portfolio. The platform includes newsletter subscriptions, social media integration, and a comprehensive dashboard for managing content and client interactions."
+    },
+    {
+        "slug": "multi-vendor-cbt-platform",
+        "title": "Multi-Vendor CBT Platform",
+        "description": "A comprehensive Computer-Based Testing platform for schools. Features secure exam management, multi-vendor support, real-time analytics, and scalable architecture for modern education.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Education Tech"
+        ],
+        "image": "/images/multi-vendor-cbt-platform.png",
+        "url": "https://school-management-app-zeta.vercel.app/",
+        "content": "The Multi-Vendor CBT Platform transforms education with a comprehensive Computer-Based Testing solution. The platform offers secure exam management, supports multiple vendors, provides real-time analytics, and is designed for scalability in modern educational environments."
+    },
+    {
+        "slug": "fuel-go-nigeria",
+        "title": "FuelGo Nigeria",
+        "description": "A fuel delivery platform for Nigeria. Features real-time fuel price comparison, vendor search by location, fuel delivery ordering, and fleet management services.",
         "tags": [
             "React",
             "Node.js",
-            "PostgreSQL"
+            "MongoDB",
+            "E-commerce"
         ],
-        "image": "/images/project-3.jpg",
-        "content": "Full case study content here..."
+        "image": "/images/fuel-go-nigeria.png",
+        "url": "https://fuel-go-nigeria-iuuf.vercel.app/",
+        "content": "FuelGo Nigeria is a comprehensive fuel delivery platform that helps users find the best fuel prices, compare vendors, and order fuel delivery to their location. The platform includes features for fleet management, fuel cards, and price alerts."
+    },
+    {
+        "slug": "chawgo",
+        "title": "ChawGo",
+        "description": "A food delivery platform with comprehensive dashboard management. Features order tracking, vendor management, real-time updates, and analytics for both customers and vendors. Available on web, Android, and iOS.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "MongoDB",
+            "React Native",
+            "Food Delivery",
+            "Mobile App"
+        ],
+        "image": "/images/chawgo.png",
+        "url": "https://chawgo-one.vercel.app/dashboard",
+        "androidUrl": "",
+        "iosUrl": "",
+        "content": "ChawGo is a modern food delivery platform featuring a comprehensive dashboard for managing orders, vendors, and analytics. The platform provides real-time order tracking, vendor management tools, and detailed analytics for both customers and business owners. Available as a web application and native mobile apps for both Android and iOS platforms."
     }
 ]
