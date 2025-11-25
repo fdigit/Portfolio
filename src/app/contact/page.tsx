@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Sparkles, Send } from "lucide-react";
 import ContactForm from "@/components/forms/ContactForm";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function ContactPage() {
     return (
@@ -38,7 +39,7 @@ export default function ContactPage() {
                             <div className="space-y-6">
                                 {/* Email Card */}
                                 <motion.a
-                                    href="mailto:f.mfonn@gmail.com"
+                                    href={`mailto:${SITE_CONFIG.email}`}
                                     className="block p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
                                     whileHover={{ scale: 1.02, y: -4 }}
                                     whileTap={{ scale: 0.98 }}
@@ -50,7 +51,7 @@ export default function ContactPage() {
                                         <div className="flex-1 min-w-0">
                                             <h3 className="text-lg md:text-xl font-bold text-text-dark dark:text-text-light mb-2">Email</h3>
                                             <p className="text-base md:text-lg text-gray-dark dark:text-gray-300 break-all group-hover:text-primary transition-colors">
-                                                f.mfonn@gmail.com
+                                                {SITE_CONFIG.email}
                                             </p>
                                         </div>
                                     </div>
@@ -58,7 +59,7 @@ export default function ContactPage() {
 
                                 {/* Phone Card */}
                                 <motion.a
-                                    href="tel:08035516613"
+                                    href={`tel:${SITE_CONFIG.phone}`}
                                     className="block p-6 md:p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 group"
                                     whileHover={{ scale: 1.02, y: -4 }}
                                     whileTap={{ scale: 0.98 }}
@@ -70,7 +71,7 @@ export default function ContactPage() {
                                         <div className="flex-1 min-w-0">
                                             <h3 className="text-lg md:text-xl font-bold text-text-dark dark:text-text-light mb-2">Phone / WhatsApp</h3>
                                             <p className="text-base md:text-lg text-gray-dark dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                                                08035516613
+                                                {SITE_CONFIG.phone}
                                             </p>
                                         </div>
                                     </div>

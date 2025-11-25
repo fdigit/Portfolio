@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Facebook } from "lucide-react";
 import { SITE_CONFIG, SOCIAL_LINKS, NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
@@ -46,6 +46,24 @@ export default function Footer() {
                                 <Github size={24} />
                             </a>
                             <a
+                                href={SOCIAL_LINKS.facebook}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
+                                aria-label="Visit Facebook profile"
+                            >
+                                <Facebook size={24} />
+                            </a>
+                            <a
+                                href={SOCIAL_LINKS.twitter}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
+                                aria-label="Visit Twitter/X profile"
+                            >
+                                <Twitter size={24} />
+                            </a>
+                            <a
                                 href={SOCIAL_LINKS.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -53,15 +71,6 @@ export default function Footer() {
                                 aria-label="Visit LinkedIn profile"
                             >
                                 <Linkedin size={24} />
-                            </a>
-                            <a
-                                href={SOCIAL_LINKS.twitter}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
-                                aria-label="Visit Twitter profile"
-                            >
-                                <Twitter size={24} />
                             </a>
                         </div>
                         <a

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Mail, Phone, Code, Smartphone, GraduationCap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import ScrollReveal from "@/components/animations/ScrollReveal";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function AboutPage() {
     return (
@@ -227,7 +228,7 @@ export default function AboutPage() {
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
                                 <a
-                                    href="tel:08035516613"
+                                    href={`tel:${SITE_CONFIG.phone}`}
                                     className="flex items-center gap-3 px-4 sm:px-6 py-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/50 group w-full sm:w-auto"
                                 >
                                     <div className="p-2 bg-green-500 rounded-lg group-hover:bg-green-600 transition-colors flex-shrink-0">
@@ -235,11 +236,11 @@ export default function AboutPage() {
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-xs text-gray-dark dark:text-gray-400">Phone</p>
-                                        <p className="font-semibold text-text-dark dark:text-text-light text-sm sm:text-base break-all sm:break-normal">08035516613</p>
+                                        <p className="font-semibold text-text-dark dark:text-text-light text-sm sm:text-base break-all sm:break-normal">{SITE_CONFIG.phone}</p>
                                     </div>
                                 </a>
                                 <a
-                                    href="mailto:f.mfonn@gmail.com"
+                                    href={`mailto:${SITE_CONFIG.email}`}
                                     className="flex items-center gap-3 px-4 sm:px-6 py-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 hover:border-primary/30 dark:hover:border-primary/50 group w-full sm:w-auto"
                                 >
                                     <div className="p-2 bg-primary rounded-lg group-hover:bg-primary-dark transition-colors flex-shrink-0">
@@ -247,7 +248,7 @@ export default function AboutPage() {
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-xs text-gray-dark dark:text-gray-400">Email</p>
-                                        <p className="font-semibold text-text-dark dark:text-text-light text-sm sm:text-base break-all sm:break-normal">f.mfonn@gmail.com</p>
+                                        <p className="font-semibold text-text-dark dark:text-text-light text-sm sm:text-base break-all sm:break-normal">{SITE_CONFIG.email}</p>
                                     </div>
                                 </a>
                             </div>

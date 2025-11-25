@@ -57,3 +57,5 @@ After installation, test the following:
 - [ ] All pages load without errors
 - [ ] SEO metadata is present in page source
 
+
+

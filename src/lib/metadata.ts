@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SITE_CONFIG } from "./constants";
+import { SITE_CONFIG, SOCIAL_LINKS } from "./constants";
 
 export function createMetadata({
     title,
@@ -49,7 +49,7 @@ export function createMetadata({
             title: fullTitle,
             description: fullDescription,
             images: [ogImage],
-            creator: "@mfonfrancis",
+            creator: "@Funkyy002",
         },
         robots: {
             index: true,
@@ -85,6 +85,9 @@ export function createStructuredData(type: "Person" | "Portfolio" | "Project", d
                 SITE_CONFIG.url,
                 SITE_CONFIG.url + "/projects",
                 SITE_CONFIG.url + "/about",
+                SOCIAL_LINKS.github,
+                SOCIAL_LINKS.facebook,
+                SOCIAL_LINKS.twitter,
             ],
             ...data,
         };
@@ -115,4 +118,6 @@ export function createStructuredData(type: "Person" | "Portfolio" | "Project", d
 
     return base;
 }
+
+
 
