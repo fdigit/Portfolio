@@ -9,7 +9,6 @@ import {
     SiTailwindcss,
     SiNodedotjs,
     SiMongodb,
-    SiFlutter,
     SiFirebase,
     SiExpress,
     SiPostgresql,
@@ -32,7 +31,7 @@ const technologies: TechItem[] = [
     { name: "Express", icon: SiExpress, category: "Backend", proficiency: 4 },
     { name: "MongoDB", icon: SiMongodb, category: "Database", proficiency: 4 },
     { name: "PostgreSQL", icon: SiPostgresql, category: "Database", proficiency: 3 },
-    { name: "Flutter", icon: SiFlutter, category: "Mobile", proficiency: 4 },
+    { name: "React Native", icon: SiReact, category: "Mobile", proficiency: 4 },
     { name: "Firebase", icon: SiFirebase, category: "Tools", proficiency: 4 },
 ];
 

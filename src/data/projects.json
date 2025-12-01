@@ -1,5 +1,20 @@
 [
     {
+        "slug": "naija-prep-ai",
+        "title": "Naija Prep AI",
+        "description": "An AI-powered educational preparation platform for Nigeria. Features intelligent learning assistance, personalized study plans, and comprehensive exam preparation tools powered by advanced AI technology.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "AI/ML",
+            "Education",
+            "Vercel"
+        ],
+        "image": "/images/naija-prep-ai.png",
+        "url": "https://naija-prep-ai.vercel.app/",
+        "content": "Naija Prep AI is an innovative AI-powered educational platform designed to help students in Nigeria prepare for exams and improve their learning outcomes. The platform leverages advanced artificial intelligence to provide personalized study assistance, generate practice questions, and offer intelligent learning recommendations. Built with modern web technologies, it delivers a seamless user experience with real-time AI interactions and comprehensive educational resources tailored to the Nigerian curriculum."
+    },
+    {
         "slug": "ethan-mercy-foundation",
         "title": "Ethan-Mercy Foundation",
         "description": "A nonprofit foundation website providing hope and restoration services. Features donation integration, event management, and volunteer registration.",

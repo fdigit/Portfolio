@@ -141,7 +141,7 @@ export default function AboutPage() {
                                         <h3 className="text-xl font-bold text-text-dark dark:text-text-light">Mobile</h3>
                                     </div>
                                     <div className="flex flex-wrap gap-2">
-                                        {["React Native", "Flutter", "iOS", "Android", "Cross-Platform"].map(skill => (
+                                        {["React Native", "iOS", "Android", "Cross-Platform"].map(skill => (
                                             <span key={skill} className="px-3 py-1.5 bg-white dark:bg-gray-800 text-gray-dark dark:text-gray-200 rounded-lg text-sm font-medium shadow-sm border border-green-200/50 dark:border-green-700/50">
                                                 {skill}
                                             </span>
