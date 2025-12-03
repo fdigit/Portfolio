@@ -44,7 +44,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('portfolio-theme') || 'system';
+                  const theme = localStorage.getItem('portfolio-theme') || 'dark';
                   const root = document.documentElement;
                   root.classList.remove('light', 'dark');
                   if (theme === 'system') {

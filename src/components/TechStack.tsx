@@ -62,14 +62,39 @@ export default function TechStack() {
                                         <span className="w-1 h-6 bg-gradient-to-b from-primary to-purple rounded-full" />
                                         {category}
                                     </h3>
-                                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                                        {categoryTechs.map((tech, index) => (
-                                            <TechIcon
-                                                key={tech.name}
-                                                tech={tech}
-                                                index={index}
-                                            />
-                                        ))}
+                                    {/* Sliding container */}
+                                    <div className="relative overflow-hidden" style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}>
+                                        <motion.div
+                                            className="flex gap-6"
+                                            style={{ width: "fit-content" }}
+                                            animate={{
+                                                x: ["0%", "-50%"],
+                                            }}
+                                            transition={{
+                                                duration: categoryTechs.length * 3,
+                                                repeat: Infinity,
+                                                ease: "linear",
+                                            }}
+                                        >
+                                            {/* First set */}
+                                            {categoryTechs.map((tech, index) => (
+                                                <div key={`first-${tech.name}`} className="flex-shrink-0 w-[180px]">
+                                                    <TechIcon
+                                                        tech={tech}
+                                                        index={index}
+                                                    />
+                                                </div>
+                                            ))}
+                                            {/* Duplicate set for seamless loop */}
+                                            {categoryTechs.map((tech, index) => (
+                                                <div key={`second-${tech.name}`} className="flex-shrink-0 w-[180px]">
+                                                    <TechIcon
+                                                        tech={tech}
+                                                        index={index}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </motion.div>
                                     </div>
                                 </div>
                             </ScrollReveal>

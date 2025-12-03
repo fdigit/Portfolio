@@ -119,3 +119,37 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Animated gradient text */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-text {
+  background: linear-gradient(90deg, #2563eb, #8b5cf6, #ec4899, #f97316, #10b981, #2563eb);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  animation: gradient-shift 4s linear infinite;
+  display: inline-block;
+  font-weight: inherit;
+  will-change: background-position;
+}
+
+/* Fallback for browsers that don't support background-clip */
+@supports not (-webkit-background-clip: text) {
+  .animated-gradient-text {
+    color: #2563eb;
+    background: none;
+  }
+}

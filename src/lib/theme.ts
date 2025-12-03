@@ -9,13 +9,13 @@ export type Theme = "light" | "dark" | "system";
 const THEME_STORAGE_KEY = "portfolio-theme";
 
 /**
- * Get the current theme from localStorage or system preference
+ * Get the current theme from localStorage or default to dark
  */
 export function getTheme(): Theme {
-    if (typeof window === "undefined") return "system";
+    if (typeof window === "undefined") return "dark";
     
     const stored = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
-    return stored || "system";
+    return stored || "dark";
 }
 
 /**
@@ -61,6 +61,7 @@ export function initTheme(): void {
         }
     });
 }
+
 
 
 

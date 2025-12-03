@@ -3,12 +3,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import AnimatedCTA from "@/components/AnimatedCTA";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Parallax from "./animations/Parallax";
 import Link from "next/link";
-import { downloadCV } from "@/lib/downloads";
-import { toast } from "sonner";
 
 export default function Hero() {
     const containerVariants = {
@@ -118,7 +116,15 @@ export default function Hero() {
                             variants={itemVariants}
                         >
                             Hi, <br className="md:hidden" />
-                            <span className="md:block">I'm Mfon Francis</span>{" "}
+                            <span className="md:block">
+                                <motion.span 
+                                    className="animated-gradient-text"
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    I'm Mfon Francis
+                                </motion.span>
+                            </span>{" "}
                             <span className="text-orange text-2xl md:text-3xl lg:text-4xl font-semibold block md:inline md:ml-2">
                                 Web & Mobile Developer
                             </span>
@@ -140,22 +146,6 @@ export default function Hero() {
                                     View My Projects
                                 </AnimatedCTA>
                             </Link>
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                onClick={async () => {
-                                    try {
-                                        await downloadCV();
-                                        toast.success("CV downloaded successfully!");
-                                    } catch (error) {
-                                        toast.error("Failed to download CV. Please try again.");
-                                    }
-                                }}
-                                aria-label="Download CV"
-                            >
-                                Download CV
-                                <Download className="ml-2" size={20} />
-                            </Button>
                         </motion.div>
 
                         {/* Tech Stack Mini-list */}

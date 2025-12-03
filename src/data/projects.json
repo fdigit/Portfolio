@@ -97,7 +97,7 @@
             "Mobile App"
         ],
         "image": "/images/chawgo.png",
-        "url": "https://chawgo-one.vercel.app/dashboard",
+        "url": "https://chawgo-one.vercel.app/",
         "androidUrl": "",
         "iosUrl": "",
         "content": "ChawGo is a modern food delivery platform featuring a comprehensive dashboard for managing orders, vendors, and analytics. The platform provides real-time order tracking, vendor management tools, and detailed analytics for both customers and business owners. Available as a web application and native mobile apps for both Android and iOS platforms."
