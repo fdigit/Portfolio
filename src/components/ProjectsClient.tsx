@@ -62,12 +62,12 @@ export default function ProjectsClient({ projectsData }: { projectsData: Project
 
                 {/* Filter Tabs */}
                 <ScrollReveal direction="up" delay={0.2}>
-                    <div className="flex flex-wrap gap-2 sm:gap-4 mb-8 sm:mb-12">
+                    <div className="flex overflow-x-auto flex-nowrap sm:flex-wrap gap-2 sm:gap-4 mb-8 sm:mb-12 pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden mask-edges">
                         {allTags.map((tag) => (
                             <button
                                 key={tag}
                                 onClick={() => setActiveFilter(tag)}
-                                className={`relative px-4 py-2 text-sm sm:text-base font-medium rounded-full transition-colors duration-300 z-10 ${
+                                className={`relative px-4 py-2 text-sm sm:text-base font-medium rounded-full transition-colors duration-300 z-10 shrink-0 whitespace-nowrap ${
                                     activeFilter === tag
                                         ? "text-white"
                                         : "text-gray-dark dark:text-gray-300 hover:text-primary dark:hover:text-primary-light"
