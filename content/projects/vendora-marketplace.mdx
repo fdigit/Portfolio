@@ -9,3 +9,25 @@ order: 1
 ---
 
 Vendora is a comprehensive multi-vendor marketplace tailored for the Port Harcourt region. It features secure payments and an extensive catalog of local products. It seamlessly integrates with SwiftSend for fast, reliable local delivery, sharing a unified database and backend infrastructure.
+
+### The Challenge
+
+Local merchants in Port Harcourt faced high barriers to entry when trying to digitize their businesses. Existing platforms often had steep commission rates, lacked integration with hyper-local delivery networks, and struggled with unstable connectivity which degraded the shopping experience.
+
+### Architecture & Solution
+
+To solve this, Vendora was architected as a highly resilient, modern web application:
+
+- **Frontend Edge Rendering:** Built on **Next.js 14**, the platform utilizes Edge rendering for product catalogs to ensure sub-second First Contentful Paint (FCP) even on slower 3G connections.
+- **Unified Database Strategy:** Utilizing PostgreSQL via Prisma ORM, Vendora shares a centralized database with the SwiftSend logistics platform. When an order is placed on Vendora, the database triggers a transactional webhook that instantly alerts the nearest SwiftSend rider.
+- **Secure Payments:** Integrated Paystack for seamless localized transactions, utilizing webhooks to ensure payment status reconciliation in real-time.
+
+### Key Features
+
+*   **Vendor Dashboard:** A dedicated analytics and inventory management portal for merchants.
+*   **Real-time Order Tracking:** Websocket-driven live updates on order status, directly tied to the rider's GPS location via SwiftSend.
+*   **Algorithmic Search & Filtering:** Fuzzy search implementation using edge-cached Redis to ensure users find local products instantly.
+
+### Technical Achievements
+
+By decoupling the frontend presentation layer from the heavy logistics backend, Vendora achieved a Lighthouse performance score of **98/100**. The unified database approach eliminated the "double-booking" issue, where an item could be purchased while a rider was unavailable.

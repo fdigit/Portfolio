@@ -1,60 +1,39 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
-import { motion } from "framer-motion";
-import { getTheme, setTheme, applyTheme, type Theme } from "@/lib/theme";
-import { Button } from "@/components/ui/Button";
+import { motion, AnimatePresence } from "framer-motion";
 
-export default function ThemeToggle() {
-    const [theme, setThemeState] = useState<Theme>("dark");
+export function ThemeToggle() {
+    const { theme, setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
-        setThemeState(getTheme());
     }, []);
 
-    const handleThemeChange = (newTheme: Theme) => {
-        setTheme(newTheme);
-        setThemeState(newTheme);
-    };
+    if (!mounted) return <div className="w-10 h-10" />;
 
-    if (!mounted) {
-        return (
-            <div className="w-20 h-10 rounded-lg bg-gray-light dark:bg-dark-card animate-pulse" aria-hidden="true" />
-        );
-    }
+    const isDark = resolvedTheme === "dark";
 
     return (
-        <div className="relative inline-flex items-center gap-1 p-1 bg-gray-light dark:bg-dark-card rounded-lg border border-gray-medium dark:border-dark-border">
-            <motion.button
-                onClick={() => handleThemeChange("light")}
-                className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                    theme === "light"
-                        ? "text-primary bg-bg-white dark:bg-dark-card shadow-sm"
-                        : "text-gray-dark dark:text-gray-light hover:text-primary"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Switch to light theme"
-            >
-                <Sun size={16} />
-            </motion.button>
-            <motion.button
-                onClick={() => handleThemeChange("dark")}
-                className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                    theme === "dark"
-                        ? "text-primary bg-bg-white dark:bg-dark-card shadow-sm"
-                        : "text-gray-dark dark:text-gray-light hover:text-primary"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Switch to dark theme"
-            >
-                <Moon size={16} />
-            </motion.button>
-        </div>
+        <button
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Toggle theme"
+        >
+            <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                    key={isDark ? "dark" : "light"}
+                    initial={{ y: -20, opacity: 0, rotate: -90 }}
+                    animate={{ y: 0, opacity: 1, rotate: 0 }}
+                    exit={{ y: 20, opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    {isDark ? <Moon size={20} /> : <Sun size={20} />}
+                </motion.div>
+            </AnimatePresence>
+        </button>
     );
 }
-

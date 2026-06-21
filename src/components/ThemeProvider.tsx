@@ -1,15 +1,23 @@
 "use client";
 
-import { useEffect } from "react";
-import { initTheme } from "@/lib/theme";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ReactNode, useEffect, useState } from "react";
 
-export default function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: ReactNode }) {
+    const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
-        // Theme is already initialized via inline script in layout
-        // This just sets up the listener for system theme changes
-        initTheme();
+        setMounted(true);
     }, []);
 
-    return <>{children}</>;
-}
+    // Prevent hydration mismatch
+    if (!mounted) {
+        return <>{children}</>;
+    }
 
+    return (
+        <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+        </NextThemesProvider>
+    );
+}

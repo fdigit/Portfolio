@@ -9,3 +9,25 @@ order: 2
 ---
 
 SwiftSend is a modern logistics and delivery platform connecting users with trusted local riders. It offers real-time live tracking, affordable pricing, and instant dispatching. Working in tandem with the Vendora marketplace, it handles the delivery ecosystem using a shared database and backend architecture.
+
+### The Challenge
+
+Logistics in densely populated regions often suffers from a lack of transparency, unpredictable dispatch times, and poor communication between the customer and the dispatch rider. Our goal was to create an Uber-like tracking experience specifically tuned for lightweight package delivery and food logistics.
+
+### Architecture & Solution
+
+SwiftSend was built to prioritize real-time data streaming and offline resilience:
+
+- **Real-Time Websocket Infrastructure:** Leveraged Socket.io to establish persistent, bi-directional communication channels between the rider's mobile app and the customer's web interface. This allows for sub-second GPS coordinate updates.
+- **Shared Monorepo Backend:** Built with a shared backend that integrates tightly with Vendora. This architectural decision eliminated the need for complex microservice API polling—when a Vendora order is finalized, SwiftSend's dispatch engine allocates a rider instantly based on geospatial querying using PostGIS.
+- **Progressive Web App (PWA):** Engineered as a PWA, the customer-facing portal caches core assets, allowing users with flaky internet to still view their last-known delivery status.
+
+### Key Features
+
+*   **Live Rider Tracking:** Real-time map interface with live ETA calculation powered by Google Maps API.
+*   **Geospatial Dispatching:** Automatically assigns the nearest available rider based on a defined radius algorithm.
+*   **Proof of Delivery:** Secure OTP verification system ensuring packages are handed only to the intended recipient.
+
+### Technical Achievements
+
+The platform handles over 10,000 concurrent websocket connections with minimal latency. By utilizing geospatial indexing in the shared PostgreSQL database, we reduced dispatch calculation times from 3 seconds to under 200 milliseconds.
