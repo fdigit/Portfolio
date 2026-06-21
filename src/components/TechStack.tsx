@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
     SiNextdotjs,
     SiReact,
@@ -38,6 +38,7 @@ const technologies: TechItem[] = [
 const categories = ["Frontend", "Backend", "Mobile", "Database", "Tools"] as const;
 
 export default function TechStack() {
+    const shouldReduceMotion = useReducedMotion();
     return (
         <section className="py-20 bg-bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,40 +63,42 @@ export default function TechStack() {
                                         <span className="w-1 h-6 bg-gradient-to-b from-primary to-purple rounded-full" />
                                         {category}
                                     </h3>
-                                    {/* Sliding container */}
-                                    <div className="relative overflow-hidden" style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}>
-                                        <motion.div
-                                            className="flex gap-6"
-                                            style={{ width: "fit-content" }}
-                                            animate={{
-                                                x: ["0%", "-50%"],
-                                            }}
-                                            transition={{
-                                                duration: categoryTechs.length * 3,
-                                                repeat: Infinity,
-                                                ease: "linear",
-                                            }}
-                                        >
-                                            {/* First set */}
+                                    {/* Responsive sliding or static container based on preferences */}
+                                    {shouldReduceMotion ? (
+                                        <div className="flex flex-wrap gap-6 justify-center">
                                             {categoryTechs.map((tech, index) => (
-                                                <div key={`first-${tech.name}`} className="flex-shrink-0 w-[180px]">
-                                                    <TechIcon
-                                                        tech={tech}
-                                                        index={index}
-                                                    />
+                                                <div key={`static-${tech.name}`} className="w-[180px]">
+                                                    <TechIcon tech={tech} index={index} />
                                                 </div>
                                             ))}
-                                            {/* Duplicate set for seamless loop */}
-                                            {categoryTechs.map((tech, index) => (
-                                                <div key={`second-${tech.name}`} className="flex-shrink-0 w-[180px]">
-                                                    <TechIcon
-                                                        tech={tech}
-                                                        index={index}
-                                                    />
-                                                </div>
-                                            ))}
-                                        </motion.div>
-                                    </div>
+                                        </div>
+                                    ) : (
+                                        <div className="relative overflow-hidden group py-4" style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}>
+                                            <div
+                                                className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused]"
+                                                style={{ "--duration": `${categoryTechs.length * 3}s` } as React.CSSProperties}
+                                            >
+                                                {/* First set */}
+                                                {categoryTechs.map((tech, index) => (
+                                                    <div key={`first-${tech.name}`} className="flex-shrink-0 w-[180px]">
+                                                        <TechIcon
+                                                            tech={tech}
+                                                            index={index}
+                                                        />
+                                                    </div>
+                                                ))}
+                                                {/* Duplicate set for seamless loop */}
+                                                {categoryTechs.map((tech, index) => (
+                                                    <div key={`second-${tech.name}`} className="flex-shrink-0 w-[180px]">
+                                                        <TechIcon
+                                                            tech={tech}
+                                                            index={index}
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </ScrollReveal>
                         );
