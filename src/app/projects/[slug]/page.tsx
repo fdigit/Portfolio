@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink, Smartphone, Globe } from "lucide-react";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import ProjectHeroImage from "@/components/ProjectHeroImage";
-import projectsData from "@/data/projects.json";
+import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { createMetadata, createStructuredData } from "@/lib/metadata";
+import { Project } from "@/types";
 
 interface ProjectPageProps {
     params: {
@@ -13,6 +15,7 @@ interface ProjectPageProps {
 
 // Generate static params for all projects
 export async function generateStaticParams() {
+    const projectsData = getAllProjects();
     return projectsData.map((project) => ({
         slug: project.slug,
     }));
@@ -21,7 +24,7 @@ export async function generateStaticParams() {
 // Generate metadata for each project
 export async function generateMetadata({ params }: ProjectPageProps) {
     const { slug } = await params;
-    const project = projectsData.find((p) => p.slug === slug);
+    const project = getProjectBySlug(slug);
 
     if (!project) {
         return {};
@@ -37,7 +40,7 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 
 export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
     const { slug } = await params;
-    const project = projectsData.find((p) => p.slug === slug);
+    const project = getProjectBySlug(slug);
 
     if (!project) {
         notFound();
@@ -111,9 +114,9 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                         {project.content && (
                             <div>
                                 <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-text-dark dark:text-text-light">Project Details</h2>
-                                <p className="text-sm sm:text-base text-gray-dark dark:text-gray-300 leading-relaxed">
-                                    {project.content}
-                                </p>
+                                <div className="text-sm sm:text-base text-gray-dark dark:text-gray-300 leading-relaxed prose dark:prose-invert max-w-none prose-headings:text-text-dark dark:prose-headings:text-text-light prose-a:text-primary dark:prose-a:text-primary-light">
+                                    <MDXRemote source={project.content} />
+                                </div>
                             </div>
                         )}
                     </div>
@@ -150,9 +153,9 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                                     Visit Site
                                 </a>
                             )}
-                            {(project as any).androidUrl && (
+                            {project.androidUrl && (
                                 <a
-                                    href={(project as any).androidUrl}
+                                    href={project.androidUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-lg shadow-green-600/40 hover:shadow-glow hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
@@ -161,9 +164,9 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                                     Android App
                                 </a>
                             )}
-                            {(project as any).iosUrl && (
+                            {project.iosUrl && (
                                 <a
-                                    href={(project as any).iosUrl}
+                                    href={project.iosUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-medium text-white bg-gray-900 hover:bg-black rounded-lg shadow-lg shadow-gray-900/40 hover:shadow-glow hover:scale-105 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
@@ -172,9 +175,9 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                                     iOS App
                                 </a>
                             )}
-                            {(project as any).githubUrl && (
+                            {project.githubUrl && (
                                 <a
-                                    href={(project as any).githubUrl}
+                                    href={project.githubUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold border-2 border-orange text-orange hover:bg-orange/10 hover:border-orange-light hover:shadow-glow-orange hover:scale-105 relative overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg"

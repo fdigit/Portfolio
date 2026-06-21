@@ -6,7 +6,9 @@ import AnimatedCTA from "@/components/AnimatedCTA";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Parallax from "./animations/Parallax";
+import MagneticEffect from "./animations/MagneticEffect";
 import Link from "next/link";
+import blurData from "@/lib/blurData.json";
 
 export default function Hero() {
     const containerVariants = {
@@ -142,9 +144,11 @@ export default function Hero() {
                             variants={itemVariants}
                         >
                             <Link href="/projects">
-                                <AnimatedCTA variant="gradient" size="lg">
-                                    View My Projects
-                                </AnimatedCTA>
+                                <MagneticEffect>
+                                    <AnimatedCTA variant="gradient" size="lg">
+                                        View My Projects
+                                    </AnimatedCTA>
+                                </MagneticEffect>
                             </Link>
                         </motion.div>
 
@@ -215,12 +219,14 @@ export default function Hero() {
                                     transition={{ type: "spring", stiffness: 200 }}
                                 >
                                     <Image
-                                        src="/images/mfon.png"
+                                        src="/images/mfon.webp"
                                         alt="Mfon Francis"
                                         fill
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                         className="object-cover"
                                         priority
+                                        placeholder="blur"
+                                        blurDataURL={(blurData as Record<string, string>)["/images/mfon.webp"]}
                                     />
                                     
                                     {/* Animated overlay gradient */}

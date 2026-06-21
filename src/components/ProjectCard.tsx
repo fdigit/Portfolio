@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { useState } from "react";
+import blurData from "@/lib/blurData.json";
 
 interface ProjectCardProps {
     title: string;
@@ -108,6 +109,8 @@ export default function ProjectCard({ title, description, tags, image, slug, url
                             fill
                             className="object-cover"
                             onError={() => setImageError(true)}
+                            placeholder="blur"
+                            blurDataURL={(blurData as Record<string, string>)[image]}
                         />
                     ) : (
                         <div className={`w-full h-full bg-gradient-to-br ${getGradientColors(slug)} flex items-center justify-center`}>

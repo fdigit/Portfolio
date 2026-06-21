@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/lib/constants";
-import projectsData from "@/data/projects.json";
+import { getAllProjects } from "@/lib/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = SITE_CONFIG.url;
@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === "" ? 1 : 0.8,
     }));
 
+    const projectsData = getAllProjects();
     const projectRoutes = projectsData.map((project) => ({
         url: `${baseUrl}/projects/${project.slug}`,
         lastModified: new Date(),

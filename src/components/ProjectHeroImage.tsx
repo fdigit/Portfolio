@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import blurData from "@/lib/blurData.json";
 
 interface ProjectHeroImageProps {
     src: string;
@@ -45,6 +46,8 @@ export default function ProjectHeroImage({ src, alt, slug }: ProjectHeroImagePro
             className="object-cover opacity-50"
             priority
             onError={() => setImageError(true)}
+            placeholder="blur"
+            blurDataURL={(blurData as Record<string, string>)[src]}
         />
     );
 }
