@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, Facebook } from "lucide-react";
-import { SITE_CONFIG, SOCIAL_LINKS, NAV_LINKS } from "@/lib/constants";
+import { Mail } from "lucide-react";
+import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
     return (
@@ -35,43 +35,8 @@ export default function Footer() {
                     {/* Social & Contact */}
                     <div>
                         <h4 className="text-lg font-semibold text-text-light mb-4">Connect</h4>
-                        <div className="flex space-x-4 mb-4" role="list">
-                            <a
-                                href={SOCIAL_LINKS.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
-                                aria-label="Visit GitHub profile"
-                            >
-                                <Github size={24} />
-                            </a>
-                            <a
-                                href={SOCIAL_LINKS.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
-                                aria-label="Visit Facebook profile"
-                            >
-                                <Facebook size={24} />
-                            </a>
-                            <a
-                                href={SOCIAL_LINKS.twitter}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
-                                aria-label="Visit Twitter/X profile"
-                            >
-                                <Twitter size={24} />
-                            </a>
-                            <a
-                                href={SOCIAL_LINKS.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-light hover:text-primary-light transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark rounded"
-                                aria-label="Visit LinkedIn profile"
-                            >
-                                <Linkedin size={24} />
-                            </a>
+                        <div className="mb-4" role="list">
+                            {/* Socials have been removed as requested */}
                         </div>
                         <a
                             href={`mailto:${SITE_CONFIG.email}`}
