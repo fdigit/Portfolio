@@ -1,5 +1,33 @@
 [
     {
+        "slug": "vendora-marketplace",
+        "title": "Vendora Marketplace",
+        "description": "A verified multi-vendor marketplace built for Port Harcourt with secure payments and fast local delivery.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "E-commerce",
+            "Marketplace"
+        ],
+        "image": "/images/vendora-marketplace.png",
+        "url": "https://vendora-ivory.vercel.app/",
+        "content": "Vendora is a comprehensive multi-vendor marketplace tailored for the Port Harcourt region. It features secure payments and an extensive catalog of local products. It seamlessly integrates with SwiftSend for fast, reliable local delivery, sharing a unified database and backend infrastructure."
+    },
+    {
+        "slug": "swiftsend-logistics",
+        "title": "SwiftSend",
+        "description": "A fast, reliable logistics and delivery platform connecting customers with trusted riders instantly for packages and food.",
+        "tags": [
+            "Next.js",
+            "TypeScript",
+            "Logistics",
+            "Delivery"
+        ],
+        "image": "/images/swiftsend-logistics.png",
+        "url": "https://swiftsend-tau.vercel.app/",
+        "content": "SwiftSend is a modern logistics and delivery platform connecting users with trusted local riders. It offers real-time live tracking, affordable pricing, and instant dispatching. Working in tandem with the Vendora marketplace, it handles the delivery ecosystem using a shared database and backend architecture."
+    },
+    {
         "slug": "naija-prep-ai",
         "title": "Naija Prep AI",
         "description": "An AI-powered educational preparation platform for Nigeria. Features intelligent learning assistance, personalized study plans, and comprehensive exam preparation tools powered by advanced AI technology.",
@@ -81,7 +109,7 @@
             "E-commerce"
         ],
         "image": "/images/fuel-go-nigeria.png",
-        "url": "https://fuel-go-nigeria-iuuf.vercel.app/",
+        "url": "https://fuel-go-nigeria.vercel.app/",
         "content": "FuelGo Nigeria is a comprehensive fuel delivery platform that helps users find the best fuel prices, compare vendors, and order fuel delivery to their location. The platform includes features for fleet management, fuel cards, and price alerts."
     },
     {

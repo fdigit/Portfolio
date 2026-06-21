@@ -30,16 +30,22 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
+      <body 
+        className={`${inter.variable} ${poppins.variable} font-sans bg-background text-foreground antialiased`}
+        suppressHydrationWarning
+      >
         <script
+          key="person-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData) }}
         />
         <script
+          key="portfolio-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioStructuredData) }}
         />
         <script
+          key="theme-script"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -58,17 +64,14 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body 
-        className={`${inter.variable} ${poppins.variable} font-sans bg-background text-foreground antialiased`}
-        suppressHydrationWarning
-      >
-        <ThemeProvider>
-          <SkipLink />
-          <Navbar />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <Toaster />
+        <ThemeProvider key="theme-provider">
+          <>
+            <SkipLink />
+            <Navbar />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <Toaster />
+          </>
         </ThemeProvider>
       </body>
     </html>

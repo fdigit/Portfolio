@@ -56,12 +56,11 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
     });
 
     return (
-        <>
+        <main className="min-h-screen pb-20">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(projectStructuredData) }}
             />
-            <main className="min-h-screen pb-20">
             {/* Hero Section */}
             <section className="relative h-[50vh] sm:h-[60vh] w-full">
                 <ProjectHeroImage
@@ -189,6 +188,5 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                 </div>
             </section>
         </main>
-        </>
     );
 }
