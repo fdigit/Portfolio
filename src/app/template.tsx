@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             exit={{ opacity: 0, y: 20 }}
             transition={{ ease: "easeInOut", duration: 0.5 }}
         >
-            {children}
+            <>{children}</>
         </motion.div>
     );
 }

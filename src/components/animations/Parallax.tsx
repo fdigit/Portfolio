@@ -19,7 +19,7 @@ export default function Parallax({ children, speed = 0.5, className = "" }: Para
     const y = useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
 
     return (
-        <motion.div ref={ref} style={{ y }} className={className}>
+        <motion.div ref={ref} style={{ y }} className={`relative ${className}`}>
             {children}
         </motion.div>
     );

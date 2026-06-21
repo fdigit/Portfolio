@@ -32,6 +32,7 @@ export default function AboutPage() {
                                         src="/images/mfon.png"
                                         alt="Mfon Francis"
                                         fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
                                         className="object-cover"
                                         priority
                                     />
