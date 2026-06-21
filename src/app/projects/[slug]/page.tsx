@@ -136,7 +136,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                                 </div>
                                 <div>
                                     <p className="text-xs sm:text-sm text-gray-dark dark:text-gray-400">Year</p>
-                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">2024</p>
+                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">{project.year || "2024"}</p>
                                 </div>
                             </div>
                         </div>
