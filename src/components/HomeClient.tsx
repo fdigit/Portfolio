@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { Project } from "@/types";
 import Image from "next/image";
+import blurData from "@/lib/blurData.json";
 import { motion } from "framer-motion";
 
 export default function HomeClient({ featuredProjects }: { featuredProjects: Project[] }) {
@@ -119,11 +120,13 @@ export default function HomeClient({ featuredProjects }: { featuredProjects: Pro
                                 >
                                     <div className="w-full h-full flex items-center justify-center text-gray-dark bg-gradient-to-br from-primary/10 to-purple/10">
                                         <Image
-                                            src="/images/mfon.png"
+                                            src="/images/mfon.webp"
                                             alt="About Mfon"
                                             width={400}
                                             height={400}
                                             className="object-cover rounded-2xl"
+                                            placeholder="blur"
+                                            blurDataURL={(blurData as Record<string, string>).mfon}
                                         />
                                     </div>
                                 </motion.div>
