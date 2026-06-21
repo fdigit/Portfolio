@@ -12,4 +12,6 @@ export interface Project {
     role?: string;
     timeline?: string;
     year?: string;
+    featured?: boolean;
+    order?: number;
 }

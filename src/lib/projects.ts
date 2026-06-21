@@ -33,6 +33,8 @@ export function getProjectBySlug(slug: string): Project | null {
             role: data.role,
             timeline: data.timeline,
             year: data.year,
+            featured: data.featured,
+            order: data.order,
             content,
         } as Project;
     } catch (e) {
@@ -44,7 +46,8 @@ export function getAllProjects(): Project[] {
     const slugs = getProjectSlugs();
     const projects = slugs
         .map(slug => getProjectBySlug(slug))
-        .filter((project): project is Project => project !== null);
+        .filter((project): project is Project => project !== null)
+        .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
     
     return projects;
 }
