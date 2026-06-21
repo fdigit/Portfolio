@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import blurData from "@/lib/blurData.json";
 import { Button } from "@/components/ui/Button";
 import { Mail, Phone, Code, Smartphone, GraduationCap, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
@@ -29,12 +30,14 @@ export default function AboutPage() {
                                     transition={{ type: "spring", stiffness: 200 }}
                                 >
                                     <Image
-                                        src="/images/mfon.png"
+                                        src="/images/mfon.webp"
                                         alt="Mfon Francis"
                                         fill
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                         className="object-cover"
                                         priority
+                                        placeholder="blur"
+                                        blurDataURL={(blurData as Record<string, string>).mfon}
                                     />
                                 </motion.div>
                             </div>
