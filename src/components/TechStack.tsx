@@ -18,156 +18,104 @@ import ScrollReveal from "./animations/ScrollReveal";
 interface TechItem {
     name: string;
     icon: React.ComponentType<{ className?: string }>;
-    category: "Frontend" | "Backend" | "Mobile" | "Database" | "Tools";
-    proficiency: number; // 1-5
 }
 
-const technologies: TechItem[] = [
-    { name: "Next.js", icon: SiNextdotjs, category: "Frontend", proficiency: 5 },
-    { name: "React", icon: SiReact, category: "Frontend", proficiency: 5 },
-    { name: "TypeScript", icon: SiTypescript, category: "Frontend", proficiency: 5 },
-    { name: "Tailwind CSS", icon: SiTailwindcss, category: "Frontend", proficiency: 5 },
-    { name: "Node.js", icon: SiNodedotjs, category: "Backend", proficiency: 4 },
-    { name: "Express", icon: SiExpress, category: "Backend", proficiency: 4 },
-    { name: "MongoDB", icon: SiMongodb, category: "Database", proficiency: 4 },
-    { name: "PostgreSQL", icon: SiPostgresql, category: "Database", proficiency: 3 },
-    { name: "React Native", icon: SiReact, category: "Mobile", proficiency: 4 },
-    { name: "Firebase", icon: SiFirebase, category: "Tools", proficiency: 4 },
-];
+interface TechGroup {
+    title: string;
+    description: string;
+    technologies: TechItem[];
+}
 
-const categories = ["Frontend", "Backend", "Mobile", "Database", "Tools"] as const;
+const techGroups: TechGroup[] = [
+    {
+        title: "Web experiences",
+        description: "Interfaces that are fast, maintainable, and designed around real user needs.",
+        technologies: [
+            { name: "Next.js", icon: SiNextdotjs },
+            { name: "React", icon: SiReact },
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "Tailwind CSS", icon: SiTailwindcss },
+        ],
+    },
+    {
+        title: "APIs & data",
+        description: "The dependable services and data layers behind product experiences.",
+        technologies: [
+            { name: "Node.js", icon: SiNodedotjs },
+            { name: "Express", icon: SiExpress },
+            { name: "MongoDB", icon: SiMongodb },
+            { name: "PostgreSQL", icon: SiPostgresql },
+        ],
+    },
+    {
+        title: "Mobile & services",
+        description: "Cross-platform apps and managed services that help teams ship efficiently.",
+        technologies: [
+            { name: "React Native", icon: SiReact },
+            { name: "Firebase", icon: SiFirebase },
+        ],
+    },
+];
 
 export default function TechStack() {
     const shouldReduceMotion = useReducedMotion();
+
     return (
-        <section className="py-20 bg-bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-bg-white py-20 sm:py-24" aria-labelledby="tech-stack-heading">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <ScrollReveal direction="fade">
-                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-text-dark">
-                        Technologies I Work With
-                    </h2>
-                    <p className="text-center text-gray-dark mb-12 max-w-2xl mx-auto">
-                        A comprehensive toolkit for building modern web and mobile applications
-                    </p>
+                    <div className="mx-auto mb-12 max-w-2xl text-center sm:mb-16">
+                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+                            Core toolkit
+                        </p>
+                        <h2 id="tech-stack-heading" className="text-3xl font-bold text-text-dark sm:text-4xl">
+                            Technologies I use to ship products
+                        </h2>
+                        <p className="mt-4 text-base leading-7 text-gray-dark sm:text-lg">
+                            A focused stack for building thoughtful web and mobile products—from polished interfaces to dependable APIs and data.
+                        </p>
+                    </div>
                 </ScrollReveal>
 
-                <div className="space-y-12">
-                    {categories.map((category, categoryIndex) => {
-                        const categoryTechs = technologies.filter((tech) => tech.category === category);
-                        if (categoryTechs.length === 0) return null;
+                <div className="grid gap-5 lg:grid-cols-3 lg:gap-6">
+                    {techGroups.map((group, groupIndex) => (
+                        <motion.section
+                            key={group.title}
+                            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-60px" }}
+                            transition={{ duration: 0.45, delay: shouldReduceMotion ? 0 : groupIndex * 0.08 }}
+                            className="rounded-2xl border border-gray-medium bg-bg-light p-6 shadow-sm transition-shadow duration-300 hover:shadow-soft sm:p-7"
+                        >
+                            <h3 className="text-lg font-semibold text-text-dark">{group.title}</h3>
+                            <p className="mt-2 min-h-[48px] text-sm leading-6 text-gray-dark">{group.description}</p>
 
-                        return (
-                            <ScrollReveal key={category} delay={categoryIndex * 0.1} direction="up">
-                                <div>
-                                    <h3 className="text-xl font-semibold text-text-dark mb-6 flex items-center gap-2">
-                                        <span className="w-1 h-6 bg-gradient-to-b from-primary to-purple rounded-full" />
-                                        {category}
-                                    </h3>
-                                    {/* Responsive sliding or static container based on preferences */}
-                                    {shouldReduceMotion ? (
-                                        <div className="flex flex-wrap gap-6 justify-center">
-                                            {categoryTechs.map((tech, index) => (
-                                                <div key={`static-${tech.name}`} className="w-[180px]">
-                                                    <TechIcon tech={tech} index={index} />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ) : (
-                                        <div className="relative overflow-hidden group py-4" style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)" }}>
-                                            <div
-                                                className="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused]"
-                                                style={{ "--duration": `${categoryTechs.length * 3}s` } as React.CSSProperties}
-                                            >
-                                                {/* First set */}
-                                                {categoryTechs.map((tech, index) => (
-                                                    <div key={`first-${tech.name}`} className="flex-shrink-0 w-[180px]">
-                                                        <TechIcon
-                                                            tech={tech}
-                                                            index={index}
-                                                        />
-                                                    </div>
-                                                ))}
-                                                {/* Duplicate set for seamless loop */}
-                                                {categoryTechs.map((tech, index) => (
-                                                    <div key={`second-${tech.name}`} className="flex-shrink-0 w-[180px]">
-                                                        <TechIcon
-                                                            tech={tech}
-                                                            index={index}
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </ScrollReveal>
-                        );
-                    })}
+                            <ul className="mt-6 grid grid-cols-2 gap-3" aria-label={`${group.title} technologies`}>
+                                {group.technologies.map((tech) => (
+                                    <TechItem key={tech.name} tech={tech} />
+                                ))}
+                            </ul>
+                        </motion.section>
+                    ))}
                 </div>
+
+                <p className="mt-8 text-center text-sm text-gray-dark">
+                    I choose tools based on the product, the team, and the problem to solve—not just the trend.
+                </p>
             </div>
         </section>
     );
 }
 
-function TechIcon({ tech, index }: { tech: TechItem; index: number }) {
-    const [isHovered, setIsHovered] = React.useState(false);
+function TechItem({ tech }: { tech: TechItem }) {
     const Icon = tech.icon;
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05, duration: 0.4 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            className="group relative"
-        >
-            <motion.div
-                className="p-6 bg-gray-light rounded-xl hover:bg-gradient-to-br hover:from-primary/10 hover:to-purple/10 transition-all duration-300 cursor-pointer border border-gray-medium hover:border-primary/30 hover:shadow-glow"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-            >
-                <div className="flex flex-col items-center gap-3">
-                    <motion.div
-                        animate={isHovered ? { rotate: [0, -10, 10, -10, 0] } : {}}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <Icon className="text-4xl text-primary group-hover:text-purple transition-colors" />
-                    </motion.div>
-                    <p className="font-medium text-gray-dark text-sm text-center">{tech.name}</p>
-                    <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                            <motion.div
-                                key={i}
-                                className={`w-1.5 h-1.5 rounded-full ${
-                                    i < tech.proficiency
-                                        ? "bg-primary group-hover:bg-purple"
-                                        : "bg-gray-medium"
-                                }`}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: index * 0.05 + i * 0.05 }}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Tooltip */}
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    className="absolute -top-12 left-1/2 -translate-x-1/2 bg-bg-dark text-text-light px-3 py-1.5 rounded-lg text-xs whitespace-nowrap pointer-events-none z-10"
-                >
-                    <div className="flex items-center gap-1">
-                        {[...Array(tech.proficiency)].map((_, i) => (
-                            <span key={i}>⭐</span>
-                        ))}
-                    </div>
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-bg-dark rotate-45" />
-                </motion.div>
-            </motion.div>
-        </motion.div>
+        <li className="flex min-h-14 items-center gap-3 rounded-xl border border-gray-medium bg-bg-white px-3 py-3">
+            <Icon className="shrink-0 text-2xl text-primary" aria-hidden="true" />
+            <span className="text-sm font-medium text-text-dark">{tech.name}</span>
+        </li>
     );
 }
-
