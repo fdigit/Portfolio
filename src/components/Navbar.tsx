@@ -22,6 +22,15 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setIsOpen(false);
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
+
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (href.startsWith("#")) {
             e.preventDefault();
@@ -127,7 +136,9 @@ export default function Navbar() {
                             <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="text-text-dark hover:text-primary focus:outline-none p-2 rounded-lg hover:bg-gray-light transition-colors"
-                            aria-label="Toggle menu"
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            aria-controls="mobile-navigation"
+                            aria-expanded={isOpen}
                         >
                             <AnimatePresence mode="wait">
                                 {isOpen ? (
@@ -176,7 +187,7 @@ export default function Navbar() {
                             transition={{ duration: 0.3 }}
                             className="md:hidden bg-bg-white border-t border-gray-medium shadow-lg relative z-50"
                         >
-                            <nav className="px-4 pt-2 pb-6 space-y-1" aria-label="Mobile navigation">
+                            <nav id="mobile-navigation" className="px-4 pt-2 pb-6 space-y-1" aria-label="Mobile navigation">
                                 {NAV_LINKS.map((link, index) => {
                                     const isActive = pathname === link.href;
                                     return (

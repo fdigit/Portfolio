@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,28 +25,15 @@ export default function ContactForm() {
 
     const onSubmit = async (data: ContactFormData) => {
         setIsSubmitting(true);
-        try {
-            // TODO: Replace with actual API endpoint
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+        const subject = encodeURIComponent(`[Portfolio] ${data.subject}`);
+        const body = encodeURIComponent(
+            `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`
+        );
 
-            if (!response.ok) {
-                throw new Error("Failed to send message");
-            }
-
-            toast.success("Message sent successfully! I'll get back to you soon.");
-            reset();
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            toast.error("Failed to send message. Please try again or email me directly.");
-        } finally {
-            setIsSubmitting(false);
-        }
+        window.location.assign(`mailto:${SITE_CONFIG.email}?subject=${subject}&body=${body}`);
+        toast.success("Your email app is opening with your message ready to send.");
+        reset();
+        setIsSubmitting(false);
     };
 
     return (
@@ -119,4 +107,3 @@ export default function ContactForm() {
         </form>
     );
 }
-

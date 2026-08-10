@@ -19,7 +19,7 @@ export function createMetadata({
         : SITE_CONFIG.title;
     const fullDescription = description || SITE_CONFIG.description;
     const url = `${SITE_CONFIG.url}${path}`;
-    const ogImage = image || `${SITE_CONFIG.url}/og-image.jpg`;
+    const ogImage = image || `${SITE_CONFIG.url}/opengraph-image`;
 
     return {
         title: fullTitle,
@@ -118,6 +118,5 @@ export function createStructuredData(type: "Person" | "Portfolio" | "Project", d
 
     return base;
 }
-
 
 

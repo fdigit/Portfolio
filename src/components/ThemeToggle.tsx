@@ -1,17 +1,17 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ThemeToggle() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const { setTheme, resolvedTheme } = useTheme();
+    const mounted = useSyncExternalStore(
+        () => () => undefined,
+        () => true,
+        () => false
+    );
 
     if (!mounted) return <div className="w-10 h-10" />;
 
@@ -21,7 +21,7 @@ export default function ThemeToggle() {
         <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            aria-label="Toggle theme"
+            aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
         >
             <AnimatePresence mode="wait" initial={false}>
                 <motion.div
