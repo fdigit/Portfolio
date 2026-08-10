@@ -128,11 +128,11 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                             <div className="space-y-4">
                                 <div>
                                     <p className="text-xs sm:text-sm text-gray-dark dark:text-gray-400">Role</p>
-                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">Lead Developer</p>
+                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">{project.role || "Lead Developer"}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs sm:text-sm text-gray-dark dark:text-gray-400">Timeline</p>
-                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">2 Months</p>
+                                    <p className="font-medium text-text-dark dark:text-text-light text-sm sm:text-base">{project.timeline || "Not specified"}</p>
                                 </div>
                                 <div>
                                     <p className="text-xs sm:text-sm text-gray-dark dark:text-gray-400">Year</p>

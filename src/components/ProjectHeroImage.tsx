@@ -12,6 +12,7 @@ interface ProjectHeroImageProps {
 
 export default function ProjectHeroImage({ src, alt, slug }: ProjectHeroImageProps) {
     const [imageError, setImageError] = useState(false);
+    const imageBlurData = (blurData as Record<string, string>)[src];
 
     const getGradientColors = (slug: string) => {
         const gradients = [
@@ -46,8 +47,8 @@ export default function ProjectHeroImage({ src, alt, slug }: ProjectHeroImagePro
             className="object-cover opacity-50"
             priority
             onError={() => setImageError(true)}
-            placeholder="blur"
-            blurDataURL={(blurData as Record<string, string>)[src]}
+            placeholder={imageBlurData ? "blur" : "empty"}
+            blurDataURL={imageBlurData}
         />
     );
 }

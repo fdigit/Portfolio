@@ -41,6 +41,7 @@ export default function ProjectCard({ title, description, tags, image, slug, url
 
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"]);
+    const imageBlurData = (blurData as Record<string, string>)[image];
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -109,8 +110,8 @@ export default function ProjectCard({ title, description, tags, image, slug, url
                             fill
                             className="object-cover"
                             onError={() => setImageError(true)}
-                            placeholder="blur"
-                            blurDataURL={(blurData as Record<string, string>)[image]}
+                            placeholder={imageBlurData ? "blur" : "empty"}
+                            blurDataURL={imageBlurData}
                         />
                     ) : (
                         <div className={`w-full h-full bg-gradient-to-br ${getGradientColors(slug)} flex items-center justify-center`}>
